@@ -4,6 +4,18 @@ import clsx from 'clsx';
 
 import Button from 'src/components/Button';
 import useStore from 'src/store/useStore';
+import filterLight from 'src/assets/icons/light/Filter.svg';
+import filterDark from 'src/assets/icons/dark/Filter.svg';
+import sortLight from 'src/assets/icons/light/Sort.svg';
+import sortDark from 'src/assets/icons/dark/Sort.svg';
+import yesLight from 'src/assets/icons/light/Yes.svg';
+import yesDark from 'src/assets/icons/dark/Yes.svg';
+import noLight from 'src/assets/icons/light/No.svg';
+import noDark from 'src/assets/icons/dark/No.svg';
+import cardLight from 'src/assets/icons/light/Card.svg';
+import cardDark from 'src/assets/icons/dark/Card.svg';
+import walletLight from 'src/assets/icons/light/Wallet.svg';
+import walletDark from 'src/assets/icons/dark/Wallet.svg';
 import { SortItem, Filters } from '.';
 import { StyledFooter, StyledSortDrawer, StyledFilterDrawer } from './styles';
 
@@ -41,14 +53,14 @@ function TransactionFooter(props: Props) {
       <StyledFooter>
         <div className="inner">
           <button onClick={() => handleFilterDrawer(true)}>
-            <img src={`/src/assets/icons/${mode}/Filter.svg`} alt="filter-icon" />
+            <img src={mode === 'light' ? filterLight : filterDark} alt="filter-icon" />
             <span>فیلتر</span>
           </button>
 
           <span className="divider" />
 
           <button onClick={() => handleSortDrawer(true)}>
-            <img src={`/src/assets/icons/${mode}/Sort.svg`} alt="sort-icon" />
+            <img src={mode === 'light' ? sortLight : sortDark} alt="sort-icon" />
             <span>مرتب سازی</span>
           </button>
         </div>
@@ -71,14 +83,14 @@ function TransactionFooter(props: Props) {
                 className={clsx({ active: filters.IsPay === true })}
                 onClick={() => handleClickFilter('IsPay', true)}
               >
-                <img src={`/src/assets/icons/${mode}/yes.svg`} alt="success-icon" />
+                <img src={mode === 'light' ? yesLight : yesDark} alt="success-icon" />
                 <span className="text">موفق</span>
               </button>
               <button
                 className={clsx({ active: filters.IsPay === false })}
                 onClick={() => handleClickFilter('IsPay', false)}
               >
-                <img src={`/src/assets/icons/${mode}/no.svg`} alt="fail-icon" />
+                <img src={mode === 'light' ? noLight : noDark} alt="fail-icon" />
                 <span className="text">ناموفق</span>
               </button>
             </div>
@@ -91,14 +103,14 @@ function TransactionFooter(props: Props) {
                 className={clsx({ active: filters.PayType === 'کارت بانکی' })}
                 onClick={() => handleClickFilter('PayType', 'کارت بانکی')}
               >
-                <img src={`/src/assets/icons/${mode}/Card.svg`} alt="card-icon" />
+                <img src={mode === 'light' ? cardLight : cardDark} alt="card-icon" />
                 <span className="text">کارت بانکی</span>
               </button>
               <button
                 className={clsx({ active: filters.PayType === 'کیف پول' })}
                 onClick={() => handleClickFilter('PayType', 'کیف پول')}
               >
-                <img src={`/src/assets/icons/${mode}/Wallet.svg`} alt="wallet-icon" />
+                <img src={mode === 'light' ? walletLight : walletDark} alt="wallet-icon" />
                 <span className="text">کیف پول</span>
               </button>
             </div>

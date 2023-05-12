@@ -5,6 +5,11 @@ import clsx from 'clsx';
 import Button from 'src/components/Button';
 import useStore from 'src/store/useStore';
 import { addCommaSeperator, toPersianNum } from 'src/utils/number';
+import yesLight from 'src/assets/icons/light/Yes.svg';
+import yesDark from 'src/assets/icons/dark/Yes.svg';
+import noLight from 'src/assets/icons/light/No.svg';
+import noDark from 'src/assets/icons/dark/No.svg';
+import emptyStateImage from 'src/assets/images/empty-state.png';
 import { StyledWrapper, StyledCard, StyledEmpty, StyledTransactionDetailsDrawer } from './styles';
 import { Transaction } from '.';
 
@@ -94,7 +99,7 @@ function TransactionList(props: Props) {
 
       {isEmpty && (
         <StyledEmpty>
-          <img src="/src/assets/images/empty-state.png" alt="empty-state" />
+          <img src={emptyStateImage} alt="empty-state" />
           <span>تراکنشی با فیلتر اعمال شده یافت نشد، برای نمایش تراکنش‌ها فیلتر را تغییر دهید.</span>
           <Button
             onClick={handleCancelFilters}
@@ -120,12 +125,12 @@ function TransactionList(props: Props) {
             {transactionDetails?.IsPay ? (
               <>
                 موفق
-                <img src={`/src/assets/icons/${mode}/Yes.svg`} alt="success-icon" />
+                <img src={mode === 'light' ? yesLight : yesDark} alt="success-icon" />
               </>
             ) : (
               <>
                 ناموفق
-                <img src={`/src/assets/icons/${mode}/No.svg`} alt="fail-icon" />
+                <img src={mode === 'light' ? noLight : noDark} alt="fail-icon" />
               </>
             )}
           </div>

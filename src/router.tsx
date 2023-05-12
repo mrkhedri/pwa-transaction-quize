@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 import Root from 'src/routes/root';
 import Transactions from 'src/routes/transactions';
@@ -9,10 +9,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
-      // {
-      //   index: true,
-      //   element: <Navigate to="/transactions" replace />
-      // },
       {
         path: "",
         element: <Home />,

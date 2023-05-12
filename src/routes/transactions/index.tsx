@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import PageTitle from 'src/components/PageTitle';
 import TransactionList from './TransactionList';
 import TransactionFooter from './TransactionFooter';
+import jsonData from 'src/json.json';
 
 export type Transaction = {
   Date: string;
@@ -44,12 +45,9 @@ function Transaction() {
   const [filterIsVisible, setFilterIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('/src/json.json')
-      .then(response => response.json())
-      .then(json => {
-        setTransactions(json.Data)
-        setFilteredTransactions(json.Data)
-      })
+    const data = JSON.parse(JSON.stringify(jsonData));
+    setTransactions(data.Data)
+    setFilteredTransactions(data.Data)
   }, []);
 
 

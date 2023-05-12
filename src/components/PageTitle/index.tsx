@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 import useStore from 'src/store/useStore';
+import backLight from 'src/assets/icons/light/back-th2.svg'
+import backDark from 'src/assets/icons/dark/back-th2.svg'
 import { StyledWrapper } from './styles'
 
 export interface Props {
@@ -13,15 +15,16 @@ function PageTitle(props: Props) {
   const mode = useStore(state => state.mode);
   const navigate = useNavigate();
 
-  const handleBack = (): void => {
-    navigate(-1)
-  };
+  const handleBack = (): void => navigate(-1);
 
   return (
     <StyledWrapper>
       {back && (
         <button className="back-btn" onClick={handleBack}>
-          <img src={`/src/assets/icons/${mode}/back-th2.svg`} alt="back-icon" />
+          <img
+            src={mode === 'light' ? backLight : backDark}
+            alt="back-icon"
+          />
         </button>
       )}
       <h1>{title}</h1>
